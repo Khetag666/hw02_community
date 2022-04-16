@@ -10,7 +10,7 @@ def index(request):
         'posts': posts,
         'tiltle': title,
         'h1': 'Главная страница',
-        }
+    }
     return render(request, template, context)
 
 
