@@ -27,24 +27,7 @@
       <div class="container">        
         <h1>{% block h1 %}{% endblock %}</h1>
         <article>
-          {% for post in posts %}
-            <ul>
-              <li>
-                Автор: {{ post.author.get_full_name }}
-              </li>
-              <li>
-                Дата публикации: {{ post.pub_date|date:"d E Y" }}
-              </li>
-            </ul>
-            <p>{{ post.text }}</p>
-              {% if title == 'Это главная страница проекта Yatube'%}
-                  {% if post.group %}   
-                      <a href="{% url 'posts:group_list' post.group.slug %}">
-                          все записи группы</a>
-                  {% endif %} 
-              {% endif %}
-            {% if not forloop.last %}<hr>{% endif %}
-          {% endfor %}
+          {% block article %}{% endblock %}
         <article>           
     </main>      
     <footer class="border-top text-center py-3">

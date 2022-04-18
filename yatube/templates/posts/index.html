@@ -2,3 +2,8 @@
 
 {% block title %}Это главная страница проекта Yatube{% endblock %}
 {% block h1 %}Главная страница{% endblock %}
+{% block article %}
+  {% for post in posts %}
+    {% include 'includes/for.html'%}
+  {% endfor %} 
+{% endblock %}
