@@ -1,25 +1,5 @@
 {% extends 'base.html'%}
 
-{% block title %}{{title}}{% endblock %}
-{% block h1 %}{{h1}}{% endblock %}
-{% block article %}
-
-{% for post in posts %}
-  <ul>
-    <li>
-      Автор: {{ post.author.get_full_name }}
-    </li>
-    <li>
-      Дата публикации: {{ post.pub_date|date:"d E Y" }}
-    </li>
-  </ul>
-  <p>{{ post.text }}</p>
-
-  {% if post.group %}   
-    <a href="{% url 'posts:yatube' %}">все записи</a>
-  {% endif %} 
-
-  {% if not forloop.last %}<hr>{% endif %}
-{% endfor %} 
-
-{% endblock %}
+{% block title %}'Здесь будет информация о группах проекта Yatube'{% endblock %}
+{% block h1 %}{{group}}{% endblock %}
+{% block article %}{% include 'includes/for.html'%}{% endblock %}
