@@ -7,10 +7,8 @@ def index(request):
     template = 'posts/index.html/'
     posts = Post.objects.select_related('group',
                                         'author')[:settings.KOL_POST]
-    title = 'Это главная страница проекта Yatube'
     context = {
         'posts': posts,
-        'title': title,
     }
     return render(request, template, context)
 
@@ -18,7 +16,7 @@ def index(request):
 def group_posts(request, slug):
     template = 'posts/group_list.html'
     group = get_object_or_404(Group, slug=slug)
-    posts = group.posts.select_related()[:settings.KOL_POST]
+    posts = group.posts.all()[:settings.KOL_POST]
     context = {
         'group': group,
         'posts': posts,
